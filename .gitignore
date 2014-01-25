@@ -34,3 +34,7 @@ proguard/
 *.ipr
 *.iws
 .idea/
+/target
+
+# Temp files from nano and other editors
+*~
