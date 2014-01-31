@@ -5,4 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
 
+    <!-- Address resources -->
+    <string name="addr_screen_name">Addresses</string>
+    <string name="add_new_addr">Add New</string>
+    
 </resources>

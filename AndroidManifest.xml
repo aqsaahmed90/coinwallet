@@ -33,6 +33,15 @@
             </intent-filter>
         </activity>
         
+        <activity
+            android:name="com.teambitcoin.coinwallet.AddressScreen"
+            android:label="@string/addr_screen_name">
+            <intent-filter>
+                <action android:name="com.teambitcoin.coinwallet.AddressScreen" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
     </application>
 
 </manifest>
