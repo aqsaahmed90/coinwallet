@@ -20,30 +20,27 @@ import android.widget.Toast;
 
 public class AddressScreen extends Activity {
 	SimpleAdapter simpleAdapter;
-	List<HashMap<String, String>> addressList;
+	AddressContainer addresses;
+	List<HashMap<String, String>> addressEntries;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.address_main);
 		
-		addressList = new ArrayList<HashMap<String, String>>();
+		addresses = new AddressContainer();
 		initDummyList();
+		createAddressEntries();
 		
 		ListView addrListView = (ListView) findViewById(R.id.address_list);
 		
-		simpleAdapter = new SimpleAdapter(this, addressList, 
+		simpleAdapter = new SimpleAdapter(this, addressEntries, 
 				android.R.layout.simple_list_item_1, new String[] {"address"}, 
 				new int[] {android.R.id.text1});
 		
 		addrListView.setAdapter(simpleAdapter);
 		registerForContextMenu(addrListView);
 		
-//		addrListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//			public void onItemClick(AdapterView<?> av, View view, int pos, long id) {
-//				
-//			}
-//		});
 	}
 	
 	@Override
@@ -58,28 +55,40 @@ public class AddressScreen extends Activity {
 	
 	@Override
 	public boolean onContextItemSelected(MenuItem menuItem) {
-		Toast.makeText(this, "Not yet implemented!", Toast.LENGTH_SHORT).show();
+		//Toast.makeText(this, "Not yet implemented!", Toast.LENGTH_SHORT).show();
+		if(menuItem.getItemId() == 2)
+		{
+			Toast.makeText(this, "Archiving address", Toast.LENGTH_SHORT).show();
+			
+		}
 		return true;
 	}
 	
 	// TODO: replace with real address fetch
+	// TODO: Get rid of this damn thing :)
 	private void initDummyList() {
-		addressList.add(createAddress("address", new Address("addr1", "my_addr_label1", 0, 0)));
-		addressList.add(createAddress("address", new Address("addr2", "my_addr_label2", 0, 0)));
-		addressList.add(createAddress("address", new Address("addr3", "my_addr_label3", 0, 0)));
-		addressList.add(createAddress("address", new Address("addr4", "my_addr_label4", 0, 0)));
-		addressList.add(createAddress("address", new Address("addr5", "my_addr_label5", 0, 0)));
-		addressList.add(createAddress("address", new Address("addr6", "my_addr_label6", 0, 0)));
-		addressList.add(createAddress("address", new Address("addr7", "my_addr_label7", 0, 0)));
-		addressList.add(createAddress("address", new Address("addr8", "my_addr_label8", 0, 0)));
-		addressList.add(createAddress("address", new Address("addr9", "my_addr_label9", 0, 0)));
-		addressList.add(createAddress("address", new Address("addr0", "my_addr_label0", 0, 0)));
+		addresses.CreateAddress(new Address("addr1", "my_addr_label1", 0, 0));
+		addresses.CreateAddress(new Address("addr2", "my_addr_label2", 0, 0));
+		addresses.CreateAddress(new Address("addr3", "my_addr_label3", 0, 0));
+		addresses.CreateAddress(new Address("addr4", "my_addr_label4", 0, 0));
+		addresses.CreateAddress(new Address("addr5", "my_addr_label5", 0, 0));
+		addresses.CreateAddress(new Address("addr6", "my_addr_label6", 0, 0));
+		addresses.CreateAddress(new Address("addr7", "my_addr_label7", 0, 0));
+		addresses.CreateAddress(new Address("addr8", "my_addr_label8", 0, 0));
+		addresses.CreateAddress(new Address("addr9", "my_addr_label9", 0, 0));
+		addresses.CreateAddress(new Address("addr0", "my_addr_label0", 0, 0));
 	}
 	
-	private HashMap<String, String> createAddress(String key, Address addr) {
-		HashMap<String, String> addressMap = new HashMap<String, String>();
-		addressMap.put(key, addr.getAddress());
-		
-		return addressMap;
-	}	
+	// oye oye.
+	public void createAddressEntries()
+	{		
+		addressEntries = new ArrayList<HashMap<String, String>>();
+		for(Address address : addresses.activeAddressList)
+		{
+			HashMap<String,String> newEntry = new HashMap<String,String>();
+			newEntry.put("address",address.getLabel());
+			addressEntries.add(newEntry);
+		}
+	}
+	
 }

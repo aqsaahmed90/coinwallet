@@ -29,7 +29,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     	Toast toast = Toast.makeText(context, text, duration);
     	toast.show();
     	
-    	startActivity(new Intent("com.teambitcoin.coinwallet.ForgotPassword"));
+    	startActivity(new Intent("com.teambitcoin.coinwallet.AddressScreen"));
     }
     
     public void onClick(View v) {

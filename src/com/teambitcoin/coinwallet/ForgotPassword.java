@@ -29,7 +29,7 @@ public class ForgotPassword extends Activity{
 	EditText editText1 = (EditText) findViewById(R.id.editText1);
 	
 	editText1.setOnEditorActionListener(new OnEditorActionListener() {
-	    @Override
+	    
 	    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 	        boolean handled = false;
 	        if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -60,7 +60,7 @@ public class ForgotPassword extends Activity{
 		EditText editText2 = (EditText) findViewById(R.id.editText2);
 		
 		editText2.setOnEditorActionListener(new OnEditorActionListener() {
-		    @Override
+		    
 		    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 		        boolean handled = false;
 		        if (actionId == EditorInfo.IME_ACTION_DONE) {
